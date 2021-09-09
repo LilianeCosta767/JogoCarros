@@ -12,8 +12,8 @@ pos_y_carroPreto = 800
 timer = 0
 tempo_segundo = 0
 
-velocidade = 10
-velocidade_outros = 15
+velocidade = 15
+velocidade_outros = 20
 
 fundo = pygame.image.load('tela.png')
 carro = pygame.image.load('carro.png')
@@ -46,9 +46,9 @@ while(janela_aberta):
         x-=velocidade
 
     if (pos_y_policia < -200) and (pos_y_ambulancia < -200) and (pos_y_carroPreto < -200):
-        pos_y_policia = randint(800, 2000)
-        pos_y_ambulancia = randint(800, 2000)
-        pos_y_carroPreto = randint(800, 2000)
+        pos_y_policia = randint(700, 1000)
+        pos_y_ambulancia = randint(1300, 2000)
+        pos_y_carroPreto = randint(2300, 3000)
 
     if(timer < 20):
         timer += 1
