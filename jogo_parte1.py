@@ -9,6 +9,9 @@ pos_x = 180
 pos_y_policia = 260
 pos_y_ambulancia = 500
 pos_y_carroPreto = 800
+timer = 0
+tempo_segundo = 0
+
 velocidade = 10
 velocidade_outros = 15
 
@@ -18,6 +21,11 @@ policia = pygame.image.load('car1.png')
 ambulancia = pygame.image.load('car2.png')
 taxi = pygame.image.load('car3.png')
 carroPreto = pygame.image.load('car4.png')
+
+font = pygame.font.SysFont('arial black', 30)
+texto = font.render("Tempo: " + str(tempo_segundo), True, (255, 255, 255), (0, 0, 0))
+pos_texto = texto.get_rect() # retangulo atrás do texto
+pos_texto.center = 65,50
 
 janela = pygame.display.set_mode((800,600))
 pygame.display.set_caption("Criando um jogo com Python")
@@ -42,6 +50,13 @@ while(janela_aberta):
         pos_y_ambulancia = randint(800, 2000)
         pos_y_carroPreto = randint(800, 2000)
 
+    if(timer < 20):
+        timer += 1
+    else:
+        tempo_segundo += 1
+        texto = font.render("Tempo: " + str(tempo_segundo), True, (255, 255, 255), (0, 0, 0))
+        timer = 0
+
     pos_y_policia -= velocidade_outros
     pos_y_ambulancia -= velocidade_outros + 2
     pos_y_carroPreto -= velocidade_outros + 10
@@ -51,6 +66,7 @@ while(janela_aberta):
     janela.blit(policia, (pos_x, pos_y_policia))
     janela.blit(ambulancia, (pos_x + 150, pos_y_ambulancia))
     janela.blit(carroPreto, (pos_x + 290, pos_y_carroPreto))
+    janela.blit(texto,pos_texto)
 
     pygame.display.update() # atualiza a tela depois criar o desenho 
 
