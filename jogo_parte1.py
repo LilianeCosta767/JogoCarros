@@ -4,15 +4,15 @@ pygame.init()
 # limite direita = 450
 # limite esquerda = 150
 x = 300
-y = 120
+y = 100
 pos_x = 180
-pos_y_policia = 260
-pos_y_ambulancia = 500
-pos_y_carroPreto = 800
+pos_y_policia = 300
+pos_y_ambulancia = 700
+pos_y_carroPreto = 1500
 timer = 0
 tempo_segundo = 0
 
-velocidade = 15
+velocidade = 20
 velocidade_outros = 20
 
 fundo = pygame.image.load('tela.png')
@@ -45,6 +45,12 @@ while(janela_aberta):
     if comandos[pygame.K_LEFT] and x >= 160: # se a tecla de seta pra esquerda for pressionada
         x-=velocidade
 
+    # detecta colisão
+    if((x-50 < pos_x and pos_y_policia == y)):
+        # y - 1200
+        exit()
+
+    # posição dos carros animados
     if (pos_y_policia < -200) and (pos_y_ambulancia < -200) and (pos_y_carroPreto < -200):
         pos_y_policia = randint(700, 1000)
         pos_y_ambulancia = randint(1300, 2000)
